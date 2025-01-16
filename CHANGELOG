@@ -1,3 +1,138 @@
+02-12-2024 (v4.1.1)
+
+  @joint/core
+  * dia.ElementView - fix return types (DOM `Element` vs. `dia.Element`)
+  * dia.ToolsView - make sure tools are rendered before the first update
+
+27-11-2024 (v4.1.0)
+
+  @joint/core
+  * dia.Paper - add methods to find cell/element/link views in paper
+  * dia.ElementView - add `getTargetParentView()` method
+  * dia.ElementView - fix to prevent exception when position or size is not defined
+  * dia.LinkView - update tools when labels change
+  * dia.LinkView - fix to invalidate the root node cache when labels change
+  * dia.CellView - expose special presentation attributes API
+  * dia.CellView - add `isIntersecting()` method
+  * dia.Graph - accept `toJSON()` options
+  * dia.Graph - add `transferCellEmbeds()` and `transferCellConnectedLinks()` methods
+  * dia.Graph - add methods to find cells/elements/links in graph
+  * dia.Graph - fix to remove graph reference from cells after `resetCells()`
+  * dia.Element - add `getPortGroupNames()` method
+  * dia.Cell - add `ignoreDefaults` and `ignoreEmptyAttributes` options to `toJSON()`
+  * dia.Cell - add `reparent` option to `embed()`
+  * elementTools.Control - add pointer event to `setPosition()` and `resetPosition()` signature
+  * linkTools - add `Control` link tool
+  * linkTools - add `RotateLabel` link tool
+  * linkTools - fix pending batch for `TargetArrowhead` and `SourceArrowhead`
+  * linkTools.Vertices - add `vertexAdding.interactiveLinkNode` option
+  * linkTools.Button - allow `distance` to be defined via callback
+  * routers.RightAngle - fix various routing issues
+  * dia.HighlighterView - add static `getAll()` method
+  * dia.ToolsView - fix to prevent tool `update()` from being called before previous `render()` due to visibility
+  * dia.ToolView - add `visibility` option callback
+  * mvc.View - fix to allow setting `style` via options
+  * util - add `objectDifference()` method
+  * util - expose `calc()` expression API
+  * util - expose `cloneCells()` method
+  * Geometry - add `strict` option to `containsPoint()` of `Rect`
+
+  @joint/layout-directed-graph
+  * layout.DirectedGraph - add `graph` option to `fromGraphLib()`
+
+31-05-2024 (v4.0.4)
+
+  @joint/core
+  * update HTML demo in alignment with v4
+  * dia.LinkView - fix missing arrowheads in Safari
+  * dia.attributes - fix to take the inline font attributes into account in `textWrap`
+
+14-05-2024 (v4.0.3)
+
+  * examples.libavoid - add new demo to illustrate using libavoid-js for orthogonal routing
+
+  @joint/core
+  * dia.Paper - fix to ensure grid pattern IDs are unique
+  * dia.ElementView - fix to support port IDs of number type
+  * linkTools.SourceArrowhead - fix to trigger `pointerdown` event when the user starts dragging an arrowhead
+  * linkTools.TargetArrowhead - fix to trigger `pointerdown` event when the user starts dragging an arrowhead
+
+10-04-2024 (v4.0.3)
+
+  @joint/layout-directed-graph
+  * fix distributed `package.json` by resolving `@joint/core` workspace dependency
+
+09-04-2024 (v4.0.2)
+
+  @joint/core
+  * dia.Paper - fix to prevent leaks of pending animation frame requests on `resetViews()`
+  * routers.rightAngle - fix to improve generated route
+  * dia.attributes - fix `text-wrap` to take external CSS into account
+  * Vectorizer - fix `normalizePathData()` to support zero-length arcto curves
+
+02-02-2024 (v4.0.1)
+
+  @joint/core
+  * fix content of `dist` folder
+
+  @joint/layout-directed-graph
+  * change the constraint on `@joint/core` dependency to allow patches only
+
+01-02-2024 (v4.0.0)
+
+  * switch to a monorepo
+
+  @joint/core
+  * rename package from `jointjs` to `@joint/core`
+  * remove `jQuery`, `backbone`, and `lodash` dependencies
+  * drop `CSS` (`JointJS` no longer distributed with CSS)
+  * dia.Paper - change the default cell sorting to `APPROX` type
+  * dia.Paper - remove deprecated `perpendicularLinks` option
+  * dia.Paper - remove deprecated `linkConnectionPoint` option
+  * dia.Paper - change the value of the `defaultConnectionPoint` option to `boundary`
+  * dia.Paper - add SVG `grid` layer
+  * dia.Paper - drop `drawGrid()` and `clearGrid()` methods
+  * dia.Paper - new `transform` event added
+  * dia.Paper - allow passing custom data along with transformation events
+  * dia.Paper - allow passing custom data along with resize events
+  * dia.Paper - `origin` option removed
+  * dia.Paper - `setOrigin` method removed
+  * dia.Paper - `scale()` no longer accepts scaling origin
+  * dia.Paper - add `scaleUniformAtPoint()` method
+  * dia.Paper - fix `paper:pinch` dispatched event type
+  * dia.LinkView - remove support for legacy
+  * dia.CellView - early evaluation of `calc` attributes
+  * dia.CellView - disable `useCSSSelectors` by default
+  * dia.Graph - throw exception when cell constructor not found
+  * dia.Link - become an abstract class (same as `dia.Element`)
+  * dia.Link - replace legacy attributes in the default label definition
+  * dia.Link - remove the deprecated `smooth` attribute
+  * dia.Link - remove the deprecated `manhattan` attribute
+  * dia.Cell - add `mergeArrays` options to constructor
+  * dia.Cell - remove the `parent(id)` setter
+  * shapes.standard - use `calc` expressions instead of legacy attributes (drop use of `refWidth`, `refHeight`, `refX`, `refY`, etc.)
+  * shapes.basic - remove in favor of `shapes.standard`
+  * shapes.devs - remove from package, define as custom shapes in demos
+  * shapes.pn - remove from package, define as custom shapes in demos
+  * shapes.uml - remove from package, define as custom shapes in demos
+  * shapes.logic - remove from package, define as custom shapes in demos
+  * shapes.org - remove from package, define as custom shapes in demos
+  * shapes.chess - remove from package, define as custom shapes in demos
+  * shapes.fsa - remove from package, define as custom shapes in demos
+  * highlighters.opacity - add `alphaValue` option
+  * highlighters.stroke - add `nonScalingStroke` option
+  * elementTools.Remove - change type to `remove`
+  * linkTools.Remove - change type to `remove`
+  * linkTools.Vertices - fix to trigger `link:mouseleave` event when the user stops dragging a vertex
+  * attributes.filter - change the coordinate system of the filters from `objectBoundingBox` to `userSpaceOnUse`
+  * util - remove deprecated `shapePerimeterConnectionPoint`
+  * Vectorizer - enable camel case attribute support by default
+  * Vectorizer - make the `attributeNames` property public
+
+  @joint/layout-directed-graph
+  * move the `DirectedGraph` layout into separate package
+  * upgrade `dagre` to version `1.0.4` (free from `lodash` dependency)
+
 07-11-2023 (v3.7.7)
 
   * dia.Paper - fix custom events on link label
